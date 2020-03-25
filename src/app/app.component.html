@@ -1,3 +1,31 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Start Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list lines='full'>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/places/search']" routerLinkActive="router-link-active">
+            <ion-icon slot="start" name="search"></ion-icon>
+            Search Places
+          </ion-item>
+
+
+          <ion-item [routerLink]="['/bookings']" routerLinkActive="router-link-active">
+            <ion-icon slot="start" name="checkbox-outline"></ion-icon>
+            Your Bookings
+          </ion-item>
+          <ion-item>
+            <ion-icon slot="start" name="exit"></ion-icon>
+            Logout
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>
+

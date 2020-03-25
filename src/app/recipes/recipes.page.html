@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-title>recipes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let recipe of recipes" [routerLink]="['/recipes', recipe.id]">
+      <ion-avatar slot="start">
+        <img src="https://i2.wp.com/www.vegrecipesofindia.com/wp-content/uploads/2018/10/paneer-bhurji-recipe-1.jpg" />
+      </ion-avatar>
+      <ion-label>{{recipe.title}}</ion-label>
+
+
+    </ion-item>
+  </ion-list>
+  <p class="ion-text-center" *ngIf="recipes.length == 0">No Recipes</p>
+
+</ion-content>

@@ -1,0 +1,70 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Discover Places</ion-title>
+  </ion-toolbar>
+
+</ion-header> -->
+
+<!-- <ion-content>
+
+  <ion-row>
+    <ion-col size="12" size-lg='2'>
+      <ion-card>
+        <img src="https://new-img.patrika.com/upload/images/2017/05/05/20170504-GWL-235-1493968300_835x547.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle>{{places[0].price}}</ion-card-subtitle>
+          <ion-card-title>{{places[0].title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{places[0].description}}
+        </ion-card-content>
+        <div class="ion-padding" style="float: right;" [routerLink]="['/places/search/', places[0].id]"
+          routerLinkActive="router-link-active">
+          <ion-button fill="outline">
+            More
+          </ion-button>
+        </div>
+      </ion-card>
+
+    </ion-col>
+
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-list>
+        <ion-item *ngFor="let place of places" detail [routerLink]="['/places/search/', place.id]">
+          <ion-thumbnail slot="start">
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+              style="padding : 5px">
+          </ion-thumbnail>
+          <ion-label>
+            <h2> {{place.title}}</h2>
+            <p>{{place.description}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+
+
+
+
+</ion-content> -->
+
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="search">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Discover</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="offers">
+      <ion-icon name="card"></ion-icon>
+      <ion-label>Offers</ion-label>
+    </ion-tab-button>
+
+    
+  </ion-tab-bar>
+</ion-tabs>

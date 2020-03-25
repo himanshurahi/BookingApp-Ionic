@@ -1,0 +1,14 @@
+<ion-button (click)="onSelectImage()" shape="round">
+  Select Image
+</ion-button>
+
+<input type="file" #file *ngIf="usePicker" (change) = 'GalImage($event)' id="file_input" ><input>
+
+
+
+<!-- 
+<ion-img *ngIf="location" [src]="location?.img"></ion-img>
+
+<div *ngIf="loading" style="height: 100%; display: flex; justify-content: center; align-items: center;">
+  <ion-spinner class="ion-text-center spinner" name="crescent"></ion-spinner>
+</div> -->

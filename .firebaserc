@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "booking-app-ce643": {
+      "hosting": {
+        "app": [
+          "booking-app-ce643"
+        ]
+      }
+    }
+  }
+}

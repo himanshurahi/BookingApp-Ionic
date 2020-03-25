@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-title>Search Places</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" value="all">
+    <ion-segment-button value='all'>
+      <ion-label>All Places</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Bookable">
+      <ion-label>Bookable Places</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <h3 *ngIf="places.length == 0 && !isLoading" class="ion-padding ion-text-center">No Place Found</h3>
+  <ion-row *ngIf="places.length != 0">
+    <ion-col size="12" size-lg='2'>
+      <ion-card>
+        <img src="https://new-img.patrika.com/upload/images/2017/05/05/20170504-GWL-235-1493968300_835x547.jpg" />
+        <ion-card-header>
+          <ion-card-subtitle>{{places[0].price}}</ion-card-subtitle>
+          <ion-card-title>{{places[0].title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{places[0].description}}
+        </ion-card-content>
+        <div class="ion-padding" style="float: right;" [routerLink]="['/places/search/', places[0].key]"
+          routerLinkActive="router-link-active">
+          <ion-button fill="outline">
+            More
+          </ion-button>
+        </div>
+      </ion-card>
+
+    </ion-col>
+
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-list>
+        <ion-item *ngFor="let place of places" detail [routerLink]="['/places/search/', place.key]">
+          <ion-thumbnail slot="start">
+            <img [src]="place.imgUrl" style="padding : 5px">
+          </ion-thumbnail>
+          <ion-label>
+            <h2> {{place.title}}</h2>
+            <p>{{place.description}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+
+
+  </ion-row>
+</ion-content>
+
+
+<!-- <ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="search">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>Discover</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="offers">
+        <ion-icon name="card"></ion-icon>
+        <ion-label>Offers</ion-label>
+      </ion-tab-button>
+
+     
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar> -->

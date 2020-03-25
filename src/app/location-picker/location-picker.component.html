@@ -1,0 +1,10 @@
+<ion-button (click)="onClick()" shape="round">
+  Pick Location
+</ion-button>
+
+
+
+
+<div *ngIf="loading" style="height: 100%; display: flex; justify-content: center; align-items: center;">
+  <ion-spinner class="ion-text-center spinner" name="crescent"></ion-spinner>
+</div>

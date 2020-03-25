@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{selectedPlace.title}}</ion-title>
+    <ion-buttons slot="start" color="primary">
+      <ion-button (click)="onCancel()">
+        <ion-icon slot="start" slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class=" ion-padding">
+  <form #f="ngForm" (ngSubmit)='onSubmit(f)'>
+    <ion-grid fixed>
+
+      <ion-row>
+        <ion-col size-lg="6" offset-lg="3">
+          <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input type='text' name="first_name" autocomplete="off" ngModel required #name='ngModel'></ion-input>
+          </ion-item>
+          <ion-label *ngIf="name.invalid && name.touched" class="my_error">Name Required</ion-label>
+          <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type='text' name="last_name" ngModel required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Guest</ion-label>
+            <ion-select  name='guest_number' ngModel = "1" >
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" size-lg="3" offset-lg="3">
+          <ion-item>
+            <ion-label position="floating">Available From</ion-label>
+            <ion-datetime [min]="selectedPlace.a_from.toISOString()" [max] = "selectedPlace.a_to.toISOString()" [ngModel] = "startDate.toISOString()" name = "a_from"  (ionChange) = 'DateChanged($event)' required></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6" size-lg="3">
+          <ion-item>
+            <ion-label position="floating">Available To</ion-label>
+            <ion-datetime [ngModel] = 'endDate.toISOString()' name='a_to' [min] = 'AddOneDay(startDate).toISOString()' [max] = 'selectedPlace.a_to.toISOString()'  required></ion-datetime>
+
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+    <ion-button type='submit' [disabled]='f.invalid || DateValid()' color="primary">
+      Book
+    </ion-button>
+  </form>
+</ion-content>

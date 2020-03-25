@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="CancelModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ location_title ? location_title : "Pick A Location"}}</ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="CancelModal()" >
+        <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+    <ion-buttons slot="end">
+      <ion-button (click)="locationSelected()" [disabled]='loading'>
+        <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngIf="!myLocation">
+    <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+      (onAddressChange)="handleAddressChange($event)" />
+
+  </ion-item>
+  <div *ngIf="!display" style="height: 100%; display: flex; justify-content: center; align-items: center;">
+    <ion-spinner class="ion-text-center spinner" name="crescent"></ion-spinner>
+  </div>
+  <agm-map *ngIf="display" #agmMap [zoom]='zoom' [latitude]="lat" [longitude]="lng" (mapClick)='onMapClick($event)'
+    [usePanning]=true>
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+</ion-content>
